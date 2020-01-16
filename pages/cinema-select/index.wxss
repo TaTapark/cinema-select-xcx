@@ -1,0 +1,231 @@
+Page {
+    height: 100%;
+    background: #fff;
+}
+
+.flex {
+    display: flex;
+}
+.flex-align-center {
+    display: flex;
+    align-items: center;
+}
+.flex-bottom {
+    justify-content: flex-end;
+}
+
+/* 轮播部分开始 */
+.cinemaCarou {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    width: 750rpx;
+    height: 398rpx;
+    background: #333;
+    box-sizing: border-box;
+}
+.filmsItem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 40rpx 0 210rpx; 
+}
+.filmsBox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    flex: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.filmsBoxItem {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 0 40rpx 0 210rpx;
+}
+/* 轮播部分结束 */
+.seatTabBox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    flex: none;
+    white-space: nowrap;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.seatTabs {
+    display: flex;
+    align-items: center;
+    padding: 0 28rpx;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    box-sizing: border-box;
+}
+
+.height90 {
+    height: 90rpx;
+}
+
+.seatTabsItem {
+    color: #333;
+    font-size: 26rpx;
+    margin-right:20rpx;
+    height: 90rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.seatTabsItemActive::after {
+    position: absolute;
+    left: 0;
+    bottom: 0rpx;
+    width: 100%;
+    height: 6rpx;
+    content: "";
+    display: block;
+    background-image: linear-gradient(270deg, #FBA649 0%, #F56D23 100%);
+    border-radius: 8px;
+}
+
+/* 筛选结束 */
+/* 影院列表开始 */
+.cinemaBox {
+    display: flex;
+    flex-direction: column;
+    margin: 30rpx 0 30rpx 30rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 4rpx solid #f5f5f5;
+}
+.seatList{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.cinemaName {
+    max-width: 540rpx;
+    height: 46rpx;
+    line-height: 46rpx;
+    text-align: left;
+    font-family: PingFangSC-Medium;
+}
+
+.cinemaArae {
+    max-width: 540rpx;
+    height: 46rpx;
+    line-height: 46rpx;
+    text-align: left;
+    font-family: PingFangSC-Medium;
+}
+.headName{
+    font-size: 28rpx;
+    color: #F56D23;
+}
+.headRemark{
+    font-size: 26rpx;
+    color: #F56D23;
+    margin-top:5rpx;
+}
+.price {
+    color: #D55450;
+}
+
+.cardTip {
+    width: 250rpx;
+    height: 40rpx;
+    border: 2rpx solid #F56D23;
+    border-radius: 6rpx;
+}
+
+/* 影院列表结束 */
+swiper {
+    width: 100%;
+}
+.swiper-image {
+    width: 150rpx;
+    height: 210rpx;
+	border-radius: 15rpx;
+}
+
+.active {
+    opacity: 1;
+    -webkit-transform: scale(1.25) translateY(-6rpx);
+    transform: scale(1.25) translateY(-6rpx);
+}
+
+.movieNameBox {
+    width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+   
+}
+
+/* 座位列表开始 */
+.cardRule {
+    width: 750rpx;
+    height: 80rpx;
+    background-image: linear-gradient(90deg,#ffeee5,rgba(251,166,73,0))
+}
+
+.cardFavBox {
+    width:665rpx;
+}
+.seatFirWidth{
+    display: flex;
+    flex: 1;
+    width: 280rpx;
+}
+.show_time{
+    font-size: 40rpx;
+    color: #333;
+    margin-bottom: 15rpx;
+}
+.seatVersion{
+    text-align: left;
+    font-family: PingFangSC-Medium;
+    font-size: 20rpx;
+    color: #666;
+    margin: 10rpx 0 25rpx 0;
+}
+.cinema_name {
+    font-size: 20rpx;
+    color: #666;
+}
+.movieClo{
+    width: 114rpx;
+    font-size: 24rpx;
+    color: #333;
+}
+.cardFav {
+    width: 228rpx;
+    height: 48rpx;
+    background-color: #F56D23;
+}
+
+.seatColor {
+    color: #D55450;
+}
+
+.seatDiscont {
+    background: #A5C7FF;
+    border-radius: 4rpx;
+}
+.buyTick {
+    font-size: 26rpx;
+    color: #F56D23;
+    margin: 0 30rpx 0 40rpx;
+    padding: 10rpx 25rpx ;
+    border: 2rpx solid #F56D23;
+    border-radius: 28.5rpx;
+}
+/* 座位列表结束 */

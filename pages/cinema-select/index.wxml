@@ -1,0 +1,112 @@
+<wxs module="timeFom">
+  module.exports = {
+   formatTime:function (option) {
+    if (!option) { return '' }
+    var month = option.substring(5, 7)
+    var day = option.substring(8, 10)
+    if (month >= 10) {
+      month = month
+    } else {
+      month = month % 10
+    }
+    if (day >= 10) {
+      day = day
+    } else {
+      day = day % 10
+    }
+    return month + '月' + day + '日'
+  },
+  formatDay:function (option) {
+    if (!option) { return '' }
+    var day = option.substring(11, 16)
+    return  day 
+  },
+  moneyTwo:function (money) {
+    if (!money) {return ''}
+    return parseFloat(money).toFixed(2)
+  }
+  }
+</wxs>
+
+  <view class="cinemaCarou" wx:if="{{headmovies.length>3}}">
+    <swiper
+      bindanimationfinish="intervalChange"
+      easeOutCubic="easeOutCubic"
+      indicator-dots="{{swiper_options.dots}}"
+      previous-margin="80rpx"
+      display-multiple-items="{{4}}"
+      interval="{{swiper_options.interval}}"
+      duration="{{swiper_options.duration}}"
+      current="{{current}}"
+    >
+      <block
+        wx:for="{{headmovies}}"
+        wx:for-item="headmovie"
+        wx:key="show_name"
+        wx:for-index="index"
+        class="filmsBox"
+      >
+        <swiper-item
+          class="filmsItem"
+          data-current="{{index}}"
+          data-noClick="{{headmovie.noClick}}"
+          catchtap="goToCenter"
+        >
+          <image
+            class="pic {{headmovie.noClick?'':'image_bg'}} swiper-image {{current==index?'active':''}}"
+            src="{{headmovie.poster}}"
+          />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="movieNameBox" wx:if="{{headmovies.length>3}}">
+    <view class="headName">{{headName}}</view>
+    <view class="headRemark">{{headRemark?headRemark:'暂无评分'}}</view>
+  </view>
+
+  <view>
+    <scroll-view class="seatTabBox" scroll-x>
+      <view class="seatTabs" >
+
+        <view wx:for="{{tabListShow}}"
+		  wx:for-item="tabItem"
+		  wx:key="day"
+          class="seatTabsItem {{ tabType == index ? 'seatTabsItemActive' : '' }}"
+          data-type="{{index}}"
+          bindtap="switchStatus"
+        >{{timeFom.formatTime(tabItem.day)}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class>
+    <navigator
+      wx:for="{{moviesList}}"
+      wx:for-item="movie"
+      wx:key="show_time"
+      url=""
+      class="cinemaBox"
+	  bind:tap="buyTick"
+    >
+      <view class="seatList">
+        <view class="seatFirWidth">
+          <view class="flex-direction mr20">
+            <view class="show_time bold">{{timeFom.formatDay(movie.show_time)}}</view>
+            <view class="movieClo">{{timeFom.formatDay(movie.close_time)}}散场</view>
+          </view>
+          <view class="flex-direction flex-center-strat">
+            <view class="seatVersion">{{movie.show_version}}</view>
+            <view class="cinema_name">{{movie.cinema_name}}</view>
+          </view>
+        </view>
+
+        <view class="flex-direction">
+          <view class="size26 seatColor flex flex-align-center flex-bottom">
+            <view class="size40">{{timeFom.moneyTwo(movie.price)?timeFom.moneyTwo(movie.price):'00.00'}}</view>元
+          </view>
+        </view>
+        <view class="buyTick">购票</view>
+      </view>
+    </navigator>
+  </view>
